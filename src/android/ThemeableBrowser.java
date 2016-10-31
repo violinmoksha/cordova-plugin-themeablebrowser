@@ -757,6 +757,13 @@ public class ThemeableBrowser extends CordovaPlugin {
                     ((LinearLayout.LayoutParams) inAppWebViewParams).weight = 1;
                 }
                 inAppWebView.setLayoutParams(inAppWebViewParams);
+
+                int drawableId = preferences.getInteger("SplashDrawableId", 0);
+                if (drawableId != 0) {
+                    inAppWebView.setBackgroundColor(0);
+                    inAppWebView.setBackgroundResource(R.drawable.screen);
+                }
+                
                 inAppWebView.setWebChromeClient(new InAppChromeClient(thatWebView));
                 WebViewClient client = new ThemeableBrowserClient(thatWebView, new PageLoadListener() {
                     @Override
